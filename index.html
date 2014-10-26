@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<title>Ajax form upload</title>
+</head>
+<body>
+	
+	<div ng-app="app" ng-controller="MainController">
+		<h3>Angular way:</h3>
+		<form ajax-form call-back="callbackFn" action="upload.php" method="post">
+			Your name: <br>
+			<input type="text" name="name" placeholder="Your name"> <br> <br>
+
+			Select your avatar: <br>
+			<input type="file" name="avatar"> <br> <br>
+			<!-- sure you can use it to multiple file upload -->
+			<!-- <input type="file" name="avatar[]" multiple> -->
+
+			Please write your comment: <br>
+			<textarea name="comment" cols="30" rows="7"></textarea>
+
+			<br><br>
+			<button>Submit</button>
+		</form>
+	</div>
+
+	<br><br>
+	or actually you can just call this function like this
+	<code>
+<pre>
+$(document).ready(function()
+{
+	$('#form').ajaxForm(function(response) { 
+		console.log(response);
+	});
+});
+</pre>
+	</code>
+	<br><br>
+	<div>
+		<h3>Default method:</h3>
+		<form id="form" action="upload.php" method="post">
+			Your name: <br>
+			<input type="text" name="name" placeholder="Your name"> <br> <br>
+
+			Select your avatar: <br>
+			<input type="file" name="avatar"> <br> <br>
+
+			Please write your comment: <br>
+			<textarea name="comment" cols="30" rows="7"></textarea>
+
+			<br><br>
+			<button>Submit</button>
+		</form>
+	</div>
+
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/jquery.form.js"></script>
+	<script src="js/angular/angular.min.js"></script>
+	<script src="js/angular/angular-route.min.js"></script>
+	<script src="js/website.js"></script>
+	<script>
+		$(document).ready(function()
+		{
+			$('#form').ajaxForm(function(response) { 
+				console.log(response);
+			});
+		});
+	</script>
+</body>
+</html>
